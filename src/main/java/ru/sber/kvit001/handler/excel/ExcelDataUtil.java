@@ -119,8 +119,15 @@ public class ExcelDataUtil {
             String sumStr = formatter.formatCellValue(billSheet.getRow(17).getCell(7), evaluator);
             Double sum = ExcelDataUtil.toDouble(sumStr);
 
+            String s = sumStr
+                    .replace(",", ".")
+                    .replace(" ", "")
+                    .replace(Character.toString((char) 160), "");
+
+            String ss = deleteDoubleStrDelimiters(s);
+
             if (sum > 0){
-                commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, "00000000000000000130", "45905000"));
+                commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, s, ss));
             }
         }
 
