@@ -121,7 +121,7 @@ public class ExcelDataUtil {
             Double sum = ExcelDataUtil.toDouble(sumStr);
 
             if (sum > 0){
-                commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, "00000000000000000130", "45905000"));
+                commonReqsList.add(new CommonReqs(contract, fio, adr, "", sum, "00000000000000000130", "45905000"));
             }
         }
 
