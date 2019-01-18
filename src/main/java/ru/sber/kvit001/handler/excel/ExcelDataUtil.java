@@ -124,7 +124,7 @@ public class ExcelDataUtil {
                     .replace(" ", "")
                     .replace(Character.toString((char) 160), "");
 
-            String ss = Integer.toString(s.charAt('.'));
+            String ss = Integer.toString(s.indexOf('.'));
 
             if (sum > 0){
                 commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, s, ss));
