@@ -81,7 +81,8 @@ public class ExcelDataUtil {
     public static String deleteDoubleStrDelimiters(String str){
         int count = str.length() - str.replace(".", "").length();
         if (count > 1){
-            String newStr = str.replaceFirst(".", "");
+            int indexOfDot = str.indexOf('.');
+            String newStr = new StringBuilder(str).deleteCharAt(indexOfDot).toString();
             return deleteDoubleStrDelimiters(newStr);
         } else {
             return str;
@@ -119,15 +120,8 @@ public class ExcelDataUtil {
             String sumStr = formatter.formatCellValue(billSheet.getRow(17).getCell(7), evaluator);
             Double sum = ExcelDataUtil.toDouble(sumStr);
 
-            String s = sumStr
-                    .replace(",", ".")
-                    .replace(" ", "")
-                    .replace(Character.toString((char) 160), "");
-
-            String ss = Integer.toString(s.indexOf('.'));
-
             if (sum > 0){
-                commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, s, ss));
+                commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, "00000000000000000130", "45905000"));
             }
         }
 
