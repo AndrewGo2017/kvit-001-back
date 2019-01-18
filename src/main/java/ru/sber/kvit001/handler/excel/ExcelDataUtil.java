@@ -124,7 +124,7 @@ public class ExcelDataUtil {
                     .replace(" ", "")
                     .replace(Character.toString((char) 160), "");
 
-            String ss = deleteDoubleStrDelimiters(s);
+            String ss = s.replaceFirst(".", "");
 
             if (sum > 0){
                 commonReqsList.add(new CommonReqs(contract, fio, adr, sumStr, sum, s, ss));
